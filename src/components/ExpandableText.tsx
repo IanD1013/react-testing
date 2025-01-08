@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const ExpandableText = ({ text }: { text: string }) => {
   const limit = 255;
@@ -8,13 +8,9 @@ const ExpandableText = ({ text }: { text: string }) => {
 
   return (
     <div>
-      {isExpanded ? (
-        <article>{text}</article>
-      ) : (
-        <article>{text.substring(0, limit)}...</article>
-      )}
-      <button onClick={() => setExpanded(!isExpanded)}>
-        {isExpanded ? "Show Less" : "Show More"}
+      {isExpanded ? <article>{text}</article> : <article>{text.substring(0, limit)}...</article>}
+      <button className="btn" onClick={() => setExpanded(!isExpanded)}>
+        {isExpanded ? 'Show Less' : 'Show More'}
       </button>
     </div>
   );
