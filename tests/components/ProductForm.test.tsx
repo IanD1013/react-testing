@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import ProductForm from '../../src/components/ProductForm';
 import { Category, Product } from '../../src/entities';
 import AllProviders from '../AllProviders';
@@ -49,6 +50,32 @@ describe('ProductForm', () => {
     expect(nameInput).toHaveFocus();
   });
 
+  it.each([
+    {
+      scenario: 'missing',
+      errorMessage: /required/i,
+    },
+    {
+      scenario: 'longer than 255 characters',
+      name: 'a'.repeat(256),
+      errorMessage: /255/i,
+    },
+  ])('should display an error if name is $scenario', async ({ name, errorMessage }) => {
+    const { waitForFormToLoad } = renderComponent();
+
+    const form = await waitForFormToLoad();
+    const user = userEvent.setup();
+    if (name) await user.type(form.nameInput, name);
+    await user.type(form.priceInput, '10');
+    await user.click(form.categoryInput);
+    const option = screen.getAllByRole('option');
+    await user.click(option[0]);
+    await user.click(form.submitButton);
+
+    const error = screen.getByRole('alert');
+    expect(error).toHaveTextContent(errorMessage);
+  });
+
   const renderComponent = (product?: Product) => {
     render(<ProductForm product={product} onSubmit={vi.fn()} />, { wrapper: AllProviders });
 
@@ -60,6 +87,7 @@ describe('ProductForm', () => {
           nameInput: screen.getByPlaceholderText(/name/i),
           priceInput: screen.getByPlaceholderText(/price/i),
           categoryInput: screen.getByRole('combobox', { name: /category/i }),
+          submitButton: screen.getByRole('button'),
         };
       },
     };
