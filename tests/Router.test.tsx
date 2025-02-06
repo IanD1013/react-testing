@@ -24,4 +24,16 @@ describe('Router', () => {
 
     db.product.delete({ where: { id: { equals: product.id } } });
   });
+
+  it('should render the not found page for invalid routes', () => {
+    navigateTo('invalid-route');
+
+    expect(screen.getByText(/not found/i)).toBeInTheDocument();
+  });
+
+  it('should render the admin home page for /admin ', () => {
+    navigateTo('/admin');
+
+    expect(screen.getByRole('heading', { name: /admin/i })).toBeInTheDocument();
+  });
 });
