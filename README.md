@@ -1,69 +1,101 @@
-# Testing React Apps
+# React Testing Course Project
 
-This is the starter project for my Reacting testing course where you'll learn everything you need to know to effectively test React apps. You can find the full course at: 
+This project is part of the [Testing React Apps with React Testing Library](https://codewithmosh.com/p/complete-react-testing-course) course by Code with Mosh. It demonstrates comprehensive testing practices for React applications using modern testing tools and methodologies.
 
-https://codewithmosh.com 
+## 🚀 Features
 
-## About this Project 
+- Modern React application with TypeScript
+- Comprehensive test suite using React Testing Library
+- Mock Service Worker (MSW) for API mocking
+- Authentication testing with Auth0
+- State management testing with Redux Toolkit
+- Form testing with React Hook Form and Zod
+- Routing testing with React Router
+- UI testing with Tailwind CSS and Radix UI
+- API testing with Axios
+- Test coverage reporting
 
-This is a React app built with the following technologies and libraries: 
+## 🛠️ Tech Stack
 
-- Auth0 
-- Tailwind 
-- RadixUI
-- React Router 
-- React Query  
-- Redux Toolkit 
+- **Framework:** React 18
+- **Language:** TypeScript
+- **Testing:** 
+  - Vitest
+  - React Testing Library
+  - Jest DOM
+  - MSW (Mock Service Worker)
+- **Styling:** Tailwind CSS
+- **UI Components:** Radix UI
+- **State Management:** Redux Toolkit
+- **Form Handling:** React Hook Form + Zod
+- **Routing:** React Router
+- **HTTP Client:** Axios
+- **Development Tools:** Vite
 
-Please follow these instructions carefully to setup this project on your machine. 
+## 📦 Installation
 
-## Setting up Auth0 for Authentication
-
-1. **Sign up for an Auth0 Account:**
-
-   If you don't already have an Auth0 account, you can sign up for one at [https://auth0.com/](https://auth0.com/). Auth0 offers a free tier that you can use for your project.
-
-2. **Create a New Application:**
-
-   - Log in to your Auth0 account.
-   - Go to the Auth0 Dashboard.
-   - Click on "Applications" in the left sidebar.
-   - Click the "Create Application" button.
-   - Give your application a name (e.g., "My React App").
-   - Select "Single Page Web Applications" as the application type.
-
-3. **Configure Application Settings:**
-
-   - On the application settings page, configure the following settings:
-     - Allowed Callback URLs: `http://localhost:5173` 
-     - Allowed Logout URLs: `http://localhost:5173` 
-     - Allowed Web Origins: `http://localhost:5173`
-   - Save the changes.
-
-4. **Obtain Auth0 Domain and ClientID:**
-
-   - On the application settings page, you will find your Auth0 Domain and Client ID near the top of the page.
-   - Copy the Auth0 Domain (e.g., `your-auth0-domain.auth0.com`) and Client ID (e.g., `your-client-id`).
-
-5. **Create a `.env.local` File:**
-
-   - In the root directory of the project, you'll find a sample `.env` file. Make a copy and save it as `.env.local`.
-   - Replace the Auth0 Domain and Client ID with the actual values you obtained from Auth0.
-
-
-## Running the App
-
-Now that you have set up Auth0 and configured your environment variables, you can run the React app using the following commands:
-
+1. Clone the repository:
 ```bash
-# Install dependencies
-npm install
-
-# Start the development server
-npm start
+git clone <your-repo-url>
+cd react-testing
 ```
 
-This will start the back-end process at `http://localhost:3000`. If port 3000 is in use on your machine, update the port number in the following files and run `npm start` again: 
+2. Install dependencies:
+```bash
+npm install
+```
 
-- json-server.json
-- src/main.tsx
+3. Create a `.env` file in the root directory with the following variables:
+```
+VITE_AUTH0_DOMAIN=your-auth0-domain
+VITE_AUTH0_CLIENT_ID=your-auth0-client-id
+```
+
+## 🚀 Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the production version
+- `npm run preview` - Preview the production build
+- `npm run test` - Run tests
+- `npm run test:ui` - Run tests with UI interface
+- `npm run coverage` - Generate test coverage report
+- `npm run server` - Start the JSON server for API mocking
+- `npm start` - Start both the development server and JSON server concurrently
+
+## 🧪 Testing
+
+This project includes comprehensive tests covering:
+
+- Component rendering
+- User interactions
+- Form submissions
+- API calls
+- Authentication flows
+- State management
+- Routing
+- Error handling
+
+### Running Tests
+
+```bash
+# Run tests in watch mode
+npm run test
+
+# Run tests with UI
+npm run test:ui
+
+# Generate coverage report
+npm run coverage
+```
+
+## 📚 Course Content
+
+This project is part of a comprehensive course that covers:
+
+1. Getting Started with React Testing
+2. Testing React Components
+3. Mocking APIs
+4. Testing Forms
+5. Testing State Management
+6. Testing Authentication
+7. Testing Routing
